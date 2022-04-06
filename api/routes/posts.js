@@ -4,5 +4,7 @@ const postsController = require('../controllers/posts')
 
 router.get('/posts', postsController.index)
 router.get('/posts/:penName/:id', postsController.showPost)
+router.get('/posts/:penName', postsController.showPostByPenName)
+router.post('/posts', postsController.createPost)
 
 module.exports = router

@@ -14,8 +14,25 @@ async function showPost(req, res) {
         let post = await Post.find(req.params.penName, req.params.id)
         res.status(200).json(post)
     } catch (err) {
-        res.status(500).json({err})
+        res.status(404).json({err})
+    }
+}
+async function showPostByPenName(req, res) {
+    try {
+        let post = await Post.findByPenName(req.params.penName)
+        res.status(200).json(post)
+    } catch (err) {
+        res.status(404).json({err})
     }
 }
 
-module.exports = {index, showPost}
+async function createPost(req, res) {
+    try {
+        let newPost = await Post.create(req.body)
+        res.status(201).json(newPost)
+    } catch (err) {
+        res.status(422).json({err})
+    }
+}
+
+module.exports = {index, showPost, showPostByPenName, createPost}

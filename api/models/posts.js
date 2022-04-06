@@ -34,4 +34,30 @@ module.exports = class Posts {
             }
         })
     }
+
+    static findByPenName(penName) {
+        return new Promise(async(resolve, reject) => {
+            try {
+               let postData = await db.query('SELECT * FROM posts WHERE pen_name = $1', [penName])
+               let post = postData.rows.map(p => new Posts(p))
+               resolve(post)
+            }
+            catch(err) {
+                reject('Post not found')
+            }
+        })
+    }
+
+    static create(postData) {
+        return new Promise(async(resolve, reject) => {
+            try {
+                const {title, penName, postBody} = postData
+                let newPost = await db.query('INSERT INTO posts (title, pen_name, post_body) VALUES ($1, $2, $3) RETURNING *;', [title, penName.toLowerCase(), postBody])
+                let post = new Posts(newPost.rows[0])
+                resolve(post)
+            } catch (err) {
+                reject('Post could not be created')
+            }
+        })
+    }
 }
