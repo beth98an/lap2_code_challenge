@@ -9,4 +9,13 @@ async function index (req, res) {
     }
 }
 
-module.exports = {index}
+async function showPost(req, res) {
+    try {
+        let post = await Post.find(req.params.penName, req.params.id)
+        res.status(200).json(post)
+    } catch (err) {
+        res.status(500).json({err})
+    }
+}
+
+module.exports = {index, showPost}
