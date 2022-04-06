@@ -7,11 +7,48 @@
     <title>Lap 2 code challenge</title>
 </head>
 <body>
-   <form>
-       <input type="text" placeholder="Title">
-       <input type="text" placeholder="Pen name">
-       <input type="text" placeholder="post body">
-       <input type="submit" value="Publish">
-   </form>
+    <header>
+        <h1>Telegram</h1>
+    </header>
+    <!--Write Post Section Form-->
+    <form>
+        </div>
+            <h2>Create Post</h2>
+            <input type="text" id="post-title" class="form-control" name="postTitle" placeholder="Post Title" required>
+        </div>
+
+        <div>
+            <input type="text" id="post-name" class="form-control" name="postName" placeholder="Post Name" required>
+        </div>
+
+        <div>
+            <textarea id ="post-entry" name="postEntry" cols="30" rows="5" class="form-control" required maxlength="300" placeholder="Your Story"></textarea>
+            <div>
+                <span id="current">0</span>
+                <span>/ 300</span>
+            </div>
+            <div id="charNum"></div>
+        </div>
+
+        <div class="padding-top">
+            <button type="submit" class="btn btn-primary" id="submit" style="width:100%">Publish</button> 
+        </div>
+
+    </form>
+
+    <!--All Posts Section-->
+    
+    <h2><strong>View all posts</strong></h2>
+    <section id="postHere">
+        
+    </section>
+
+
+        <!--Footer-->
+
+        
+        <footer></footer>
+
+    
 </body>
 </html>
