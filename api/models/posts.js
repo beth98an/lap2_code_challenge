@@ -35,10 +35,10 @@ module.exports = class Posts {
         })
     }
 
-    static findByPenName(penName) {
+    static findById(id) {
         return new Promise(async(resolve, reject) => {
             try {
-               let postData = await db.query('SELECT * FROM posts WHERE pen_name = $1', [penName])
+               let postData = await db.query('SELECT * FROM posts WHERE id = $1', [id])
                let post = postData.rows.map(p => new Posts(p))
                resolve(post)
             }

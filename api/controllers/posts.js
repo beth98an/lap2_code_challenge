@@ -17,9 +17,9 @@ async function showPost(req, res) {
         res.status(404).json({err})
     }
 }
-async function showPostByPenName(req, res) {
+async function showPostById(req, res) {
     try {
-        let post = await Post.findByPenName(req.params.penName)
+        let post = await Post.findById(req.params.id)
         res.status(200).json(post)
     } catch (err) {
         res.status(404).json({err})
@@ -35,4 +35,4 @@ async function createPost(req, res) {
     }
 }
 
-module.exports = {index, showPost, showPostByPenName, createPost}
+module.exports = {index, showPost, showPostById, createPost}
